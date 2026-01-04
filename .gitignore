@@ -1,0 +1,8 @@
+#Ignorowanie plikow API terraform
+*.tfstate       #Stan infrastruktury
+*.tfstate.*     #Backup stanu infrastruktury
+*.tfvars        #Wartosci zmiennych Terraform (env/secrets)
+.terraform/     #Pobrany lokalnie provider Terraform
+
+#Ignorowanie plikow IntelliJ
+.idea/
