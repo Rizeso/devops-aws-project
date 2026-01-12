@@ -17,7 +17,7 @@ resource "aws_route" "public_route" {
 
 resource "aws_route_table_association" "public_association" {
   route_table_id = aws_route_table.public_route_table.id
-  sunbet_id = aws_subnet.public_subnet.id
+  subnet_id = aws_subnet.public_subnet.id
 }
 
   ################
@@ -33,6 +33,8 @@ resource "aws_route_table" "private_route_table" {
 
 resource "aws_route" "private_route" {
   route_table_id = aws_route_table.private_route_table.id
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id = aws_nat_gateway.nat_gw.id
 }
 
 resource "aws_route_table_association" "private_association" {
