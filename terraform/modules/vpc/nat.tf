@@ -1,6 +1,6 @@
-    ################
-    ## Elastic IP ##
-    ################
+################
+## Elastic IP ##
+################
 resource "aws_eip" "nat_eip" {
   domain = "vpc"
 
@@ -9,9 +9,9 @@ resource "aws_eip" "nat_eip" {
   }
 
 }
-    #################
-    ## NAT gateway ##
-    #################
+#################
+## NAT gateway ##
+#################
 resource "aws_nat_gateway" "nat_gw" {
   allocation_id = aws_eip.nat_eip.id
   subnet_id     = aws_subnet.public_subnet.id
@@ -20,6 +20,6 @@ resource "aws_nat_gateway" "nat_gw" {
     Name = "devops-nat-gw"
   }
 
-  #Tworzenie NAT wtedy, gdy IGW istnieje
+  #Tworzenie NAT dopiero, gdy istnieje IGW
   depends_on = [aws_internet_gateway.gateway]
 }
