@@ -1,19 +1,19 @@
 resource "aws_security_group" "sg_priv_ec2" {
-  name = "sg-priv-ec2"
-  vpc_id = var.vpc_id.id
+  name = "priv-ec2-sg"
+  vpc_id = var.vpc_id
 
   ingress {
     from_port = 22
     to_port = 22
     protocol = "tcp"
-    cidr_blocks = [aws_security_group.sg_bastion.id]
+    security_groups = [aws_security_group.sg_bastion.id]
   }
 
   egress {
     from_port = 0
     to_port = 0
     protocol = "-1"
-    cidr_blocks = [0.0.0.0/0]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
