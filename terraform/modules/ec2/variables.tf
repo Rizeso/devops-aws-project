@@ -8,9 +8,7 @@ variable "instance_type" {
 }
 variable "vpc_id" {
   type    = string
-  default = "vpc-0d9baa2393fe4831d"
 }
 variable "subnet_id" {
   type    = string
-  default = "subnet-067e31e98454eebf3"
 }

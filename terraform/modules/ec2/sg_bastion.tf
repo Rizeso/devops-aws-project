@@ -1,5 +1,5 @@
 resource "aws_security_group" "sg_bastion" {
-  name = "bastion-sh"
+  name = "bastion-sg"
   vpc_id = var.vpc_id
 
   ingress {
@@ -7,6 +7,8 @@ resource "aws_security_group" "sg_bastion" {
     to_port = 22
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    #0.0.0.0/0 used only for learning/labs.
+    #In production restriction to specific IPs or replaced with SSM.
   }
 
   egress {
