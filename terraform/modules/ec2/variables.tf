@@ -7,8 +7,11 @@ variable "instance_type" {
   default = "t3.micro"
 }
 variable "vpc_id" {
-  type    = string
+  type = string
 }
-variable "subnet_id" {
-  type    = string
+variable "pub_subnet_id" {
+  type = string
+}
+variable "priv_subnet_id" {
+  type = string
 }
