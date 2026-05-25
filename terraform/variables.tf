@@ -7,6 +7,10 @@ variable "ssh_public_key" {
   type = string
 }
 
+variable "domain_name" {
+  type = string
+}
+
 ###############
 # Nazwy tagow #
 ###############

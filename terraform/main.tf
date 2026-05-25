@@ -1,6 +1,6 @@
-####################
-# Import modulu VPC#
-####################
+#####################
+# Import modulu VPC #
+#####################
 module "vpc" {
   source = "./modules/vpc"
 
@@ -11,9 +11,9 @@ module "vpc" {
   vpc_private_cidr_b = "10.0.21.0/24"
 }
 
-####################
-# Import modulu ec2#
-####################
+#####################
+# Import modulu ec2 #
+#####################
 module "ec2" {
   source = "./modules/ec2"
 
@@ -28,4 +28,16 @@ module "ec2" {
   # managed_by = var.managed_by
 }
 
+#####################
+# import modulu ALB #
+#####################
+module "alb" {
+  source = "./modules/alb"
 
+  vpc_id = module.vpc.vpc_id
+  public_subnet_ids = [
+    module.vpc.public_subnet_id_a,
+    module.vpc.public_subnet_id_b
+  ]
+  domain_name = var.domain_name
+}
