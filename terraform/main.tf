@@ -39,5 +39,4 @@ module "alb" {
     module.vpc.public_subnet_id_a,
     module.vpc.public_subnet_id_b
   ]
-  domain_name = var.domain_name
 }
