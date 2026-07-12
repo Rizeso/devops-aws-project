@@ -15,3 +15,7 @@ variable "pub_subnet_id" {
 variable "priv_subnet_id" {
   type = string
 }
+variable "alb_sg_id" {
+  description = "SG for ALB"
+  type        = string
+}

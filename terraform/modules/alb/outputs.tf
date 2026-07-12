@@ -10,3 +10,7 @@ output "alb_sg_id" {
 output "alb_tg_arn" {
   value = aws_lb_target_group.app_tg.arn
 }
+
+output "target_group_arn" {
+  value       = aws_lb_target_group.app_tg.arn
+}
