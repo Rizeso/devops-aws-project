@@ -1,10 +1,13 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello():
-    return "Hello from AWS DevOps project!"
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+@app.route("/")
+def index():
+    return jsonify(message="Hello from private EC2 behind ALB!")
+
+
+@app.route("/health")
+def health():
+    return jsonify(status="ok"), 200
