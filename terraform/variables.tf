@@ -3,10 +3,6 @@ variable "aws_region" {
   default = "eu-central-1"
 }
 
-variable "ssh_public_key" {
-  type = string
-}
-
 ###############
 # Nazwy tagow #
 ###############

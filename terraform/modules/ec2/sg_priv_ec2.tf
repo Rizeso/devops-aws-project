@@ -9,6 +9,13 @@ resource "aws_security_group" "sg_priv_ec2" {
     security_groups = [aws_security_group.sg_bastion.id]
   }
 
+  ingress {
+    from_port       = 8000
+    to_port         = 8000
+    protocol        = "tcp"
+    security_groups = [var.alb_sg_id]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
