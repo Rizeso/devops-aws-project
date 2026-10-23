@@ -21,9 +21,8 @@ module "ec2" {
   priv_subnet_id = module.vpc.private_subnet_id_a
   pub_subnet_id  = module.vpc.public_subnet_id_a
   alb_sg_id      = module.alb.alb_sg_id
+  ssh_public_key = var.ssh_public_key
 
-  # ssh_public_key = var.ssh_public_key
-  #
   # project    = var.project
   # environment = var.environment
   # managed_by = var.managed_by
