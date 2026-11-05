@@ -25,5 +25,5 @@ variable "managed_by" {
 }
 variable "ssh_public_key" {
   description = "Public SSH key for ec2"
-  type = string
+  type        = string
 }
