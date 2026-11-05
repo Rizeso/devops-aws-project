@@ -19,3 +19,7 @@ variable "alb_sg_id" {
   description = "SG for ALB"
   type        = string
 }
+variable "ssh_public_key" {
+  description = "Public SSH key for EC2"
+  type = string
+}

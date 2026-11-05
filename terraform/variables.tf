@@ -23,3 +23,7 @@ variable "managed_by" {
   type        = string
   default     = "KGruszczynski"
 }
+variable "ssh_public_key" {
+  description = "Public SSH key for ec2"
+  type        = string
+}
