@@ -6,6 +6,10 @@ on:
       - 'terraform/**'
       - '.github/workflows/terraform-ci.yml'
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   checks:
     runs-on: ubuntu-latest
@@ -13,9 +17,21 @@ jobs:
       run:
         working-directory: terraform
 
+    env:
+      TF_VAR_ssh_public_key: ${{ vars.SSH_PUBLIC_KEY }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: eu-central-1
+
+      - name: Who am I
+        run: aws sts get-caller-identity
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -25,8 +41,11 @@ jobs:
       - name: Format check
         run: terraform fmt -check -recursive
 
-      - name: Init (bez backendu)
-        run: terraform init -backend=false
+      - name: Init
+        run: terraform init
 
       - name: Validate
         run: terraform validate
+
+      - name: Plan
+        run: terraform plan -no-color -input=false
