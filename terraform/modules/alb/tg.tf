@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "app_tg" {
   }
 
   tags = {
-    name = "devops-app-tg"
+    Name = "devops-app-tg"
   }
 }
 
